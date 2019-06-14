@@ -1,0 +1,348 @@
+环境Loan.requestURL=http://test.boccfc.cn/paygate/service.xml
+
+String merchantId = "M02443701001000";// 参见合作商户参数表
+String customerId = "ucif000000000105999";// 定位唯一客户
+
+
+1.上传文件 test_sfz_01.jpg 03  test_sfz_2.jpg 40  test_sfz_2.jpg 70
+
+2.1024-贷款资格验证
+sendMap.put("IdNo","110101198705118589");
+        sendMap.put("CustomerName","朱剑成");
+        sendMap.put("MobileNo","13813131580");
+请求报文
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><message>
+<head>
+<transCode>1024</transCode>
+<transType>10</transType>
+<transReqTime>20190524112157</transReqTime>
+<transSeqNo>1558506495891</transSeqNo>
+<merchantId>M02443701001000</merchantId>
+<productCode>941212</productCode>
+<netCode>M02443701001101</netCode>
+<operatorCode>shulian</operatorCode>
+<customerId>ucif000000000105999</customerId>
+<rcmdStoreCode>M12041001001101</rcmdStoreCode>
+<rcmdStoreName>海风教育门店</rcmdStoreName>
+<terminalType>APP</terminalType>
+<version>1.0</version>
+<merId>100010</merId>
+</head>
+<body>
+<idNo>110101198705118589</idNo>
+<customerName>朱剑成</customerName>
+<mobileNo>13813131580</mobileNo>
+<rcmdStoreCode>M02443701001101</rcmdStoreCode>
+<rcmdStoreName>数联教育</rcmdStoreName>
+<extendsFileds>
+<coopMerId/>
+<coopCusId/>
+<coopOrderId/>
+</extendsFileds>
+</body>
+响应报文：
+<?xml version="1.0" encoding="UTF-8"?><message><head><transCode>1024</transCode><transType>10</transType><transReqTime>20190524112157</transReqTime><transRepTime>20190524112158</transRepTime><transSeqNo>1558506495891</transSeqNo><merchantId>M02443701001000</merchantId><productCode>941212</productCode><netCode>M02443701001101</netCode><operatorCode>shulian</operatorCode><customerId>ucif000000000105999</customerId><version>1.0</version><transRepSeqNo>20190524112158320000000014898967</transRepSeqNo><returnCode>000000</returnCode><errorMsg>成功</errorMsg></head><body><idNo>110101198705118589</idNo><customerName>朱剑成</customerName><mobileNo>13813131580</mobileNo><applyStatus>00</applyStatus><controlRejReason/><applicationId>BO20190524000011</applicationId></body><Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>HcCRZGpsUvUifLICTu7P6ftijJ8=</DigestValue></Reference></SignedInfo><SignatureValue>RXM2h5ujL66BSy7+BjkzM1OkuEHlkAAFdXrkotoObXoBg2vUwwroCIflC8ql7VCUnyaIYkAynv5WruHchcwK2l7wFzA2gFChJxyOoywuYxaB4oKnUYpnQYOIqyuspjQXRv0SffqRgjzpgIPK51qRG3COnovXu2xk1Uj+SKhujd8=</SignatureValue></Signature></message>内联平台返回到报文 --> 
+内联平台返回到报文 --> {rcmdStoreName=海风教育门店, RespCode=000000, OperId=123654, ExtendsFileds={CoopMerId=, CoopOrderId=, CoopCusId=}, ClientIp=127.0.0.1, idNo=110101198705118589, MobilePhone=13813131580, BizTrackNo=1558668116654, returnCode=000000, ReqTime=20170613175050, merchantId=M02443701001000, Version=1.0, transCode=1024, BodyLength=929, Status=00, rcmdStoreCode=M12041001001101, ReqSeqNo=1558668116654, BranchId=1234567890, RequestSysDate=20190524, version=1.0, customerName=朱剑成, terminalType=APP, _HostTransactionCode=1024, transRecordId=3460, TransRecordId=3460, transType=10, SYGENZHH=558668117627, applicationId=BO20190524000011, RcmdStoreName=数联教育, TermnId=, transSeqNo=1558506495891, _TransactionTimestamp=2019-05-24 11:21:56.836, RqUID=558668117627, ChannelId=17, operatorCode=shulian, ServiceId=IS_ROUTER_LOAN_LOANAPPLYSENIORITY, customerId=ucif000000000105999, _RejCode=000000, RcmdStoreCode=M02443701001101, RejReason=, CustomerName=朱剑成, Body={Status=null, ErrMsg=null, RejReason=null, CustomerName=朱剑成, ApplicationId=BO20190524000011, IdNo=110101198705118589, MobilePhone=null}, MobileNo=13813131580, transRepTime=20190524112158, netCode=M02443701001101, RespMessage=成功, ResultState=0, _RejMessage=成功, transRepSeqNo=20190524112158320000000014898967, errorMsg=成功, transReqTime=20190524112157, productCode=941212, _TransCode=router-loan.LoanApplySeniorityService, IdNo=110101198705118589}
+
+3.1015  人脸识别比对
+1024的进件编号 BO20190524000011
+电商平台请求报文：
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><message>
+<head>
+<transCode>1015</transCode>
+<transType/>
+<transReqTime>20190524113027</transReqTime>
+<transSeqNo>1558506495891</transSeqNo>
+<merchantId>M02443701001000</merchantId>
+<productCode>941212</productCode>
+<netCode>M02443701001101</netCode>
+<operatorCode/>
+<customerId>ucif000000000105999</customerId>
+<rcmdStoreCode>M02443701001101</rcmdStoreCode>
+<rcmdStoreName>海风教育门店</rcmdStoreName>
+<terminalType>WAP</terminalType>
+<version>1.0</version>
+<merId>100010</merId>
+</head>
+<body>
+<type/>
+<applicationId>BO20190524000011</applicationId>
+<photoList><photo>
+<type>40</type>
+<name>test_sfz_2.jpg</name>
+</photo>
+<photo>
+<type>03</type>
+<name>test_sfz_01.jpg</name>
+</photo>
+</photoList>
+</body>电商平台返回报文prase后：
+<?xml version="1.0" encoding="UTF-8"?><message><head><transCode>1015</transCode><transReqTime>20190524113027</transReqTime><transRepTime>20190524113027</transRepTime><transSeqNo>1558506495891</transSeqNo><merchantId>M02443701001000</merchantId><productCode>941212</productCode><netCode>M02443701001101</netCode><operatorCode/><customerId>ucif000000000105999</customerId><version>1.0</version><transRepSeqNo>20190524113027814000000014899021</transRepSeqNo><returnCode>000000</returnCode><errorMsg>成功</errorMsg></head><body><resultStatus>101</resultStatus><marking>89.2</marking><errorMessage/></body><Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>WKkW7zECi46fD843YR/1+Fxe7Pc=</DigestValue></Reference></SignedInfo><SignatureValue>AuVGp4jkoF1pPEEH0RiV6cLzeXS3mW1jq8/jvDMfapU4Kj+UIoxwLggoPz2vqB8qu16yZwBbLy6T70ZzDctOA/bac+2FUBF4E1fRd2AmbaWN0tF+7kPN0LFtA8qZkcgshupV9jGvEeK/TEmwnrzB4pVjq6qCr9uQmqyDOZZLW+E=</SignatureValue></Signature></message>
+内联平台返回到报文 -->
+{rcmdStoreName=海风教育门店, RespCode=000000, OperId=123654, TermnId=, transSeqNo=1558506495891, _TransactionTimestamp=2019-05-24 11:30:27.434, RqUID=558668627739, ChannelId=17, operatorCode=, ClientIp=127.0.0.1, ServiceId=IS_ROUTER_LOAN_FACEVERIFICATIONQRY, BizTrackNo=1558668627237, returnCode=000000, ReqTime=20170613175050, merchantId=M02443701001000, Version=1.0, customerId=ucif000000000105999, _RejCode=000000, transCode=1015, BodyLength=826, Body={resultStatus=null, marking=89.2, errorMessage=}, transRepTime=20190524113027, netCode=M02443701001101, rcmdStoreCode=M02443701001101, ReqSeqNo=1558668627237, errorMessage=, RespMessage=成功, ResultState=0, BranchId=1234567890, _RejMessage=成功, RequestSysDate=20190524, version=1.0, terminalType=WAP, transRepSeqNo=20190524113027814000000014899021, errorMsg=成功, _HostTransactionCode=1015, transRecordId=3461, TransRecordId=3461, Type=, transReqTime=20190524113027, PhotoList=[{Type=40, Name=test_sfz_2.jpg}, {Type=03, Name=test_sfz_01.jpg}], productCode=941212, marking=89.2, transType=, SYGENZHH=558668627739, State=101, _TransCode=router-loan.FaceVerificationQryService, ApplicationId=BO20190524000011}
+
+4.1014-卡bin查询
+卡号 6222021001108637086
+电商平台请求报文：
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><message>
+<head>
+<transCode>1014</transCode>
+<transType>20</transType>
+<transReqTime>20190524113951</transReqTime>
+<transSeqNo>1558506527089</transSeqNo>
+<merchantId>M02443701001000</merchantId>
+<productCode>941212</productCode>
+<netCode>M02443701001101</netCode>
+<operatorCode>shulian</operatorCode>
+<customerId>ucif000000000105999</customerId>
+<rcmdStoreCode>M02443701001101</rcmdStoreCode>
+<rcmdStoreName>数联教育</rcmdStoreName>
+<terminalType>APP</terminalType>
+<version>1.1</version>
+<merId>100010</merId>
+</head>
+<body>
+<cardNo>6222021001108637086</cardNo>
+</body>电商平台返回报文prase后：
+<?xml version="1.0" encoding="UTF-8"?><message><head><transCode>1014</transCode><transType>20</transType><transReqTime>20190524113951</transReqTime><transRepTime>20190524113951</transRepTime><transSeqNo>1558506527089</transSeqNo><merchantId>M02443701001000</merchantId><productCode>941212</productCode><netCode>M02443701001101</netCode><operatorCode>shulian</operatorCode><customerId>ucif000000000105999</customerId><version>1.1</version><transRepSeqNo>20190524113951052000000014899077</transRepSeqNo><returnCode>000000</returnCode><errorMsg>成功</errorMsg></head><body><cardNo>6222021001108637086</cardNo><cardBin>622202</cardBin><cardLen/><dcType>0</dcType><openBankId>0102</openBankId><cardIssuer>01020000</cardIssuer><cardIssuerName>工商银行</cardIssuerName></body><Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>AeWyupLIiwqSf6NIoiPGilnhkDg=</DigestValue></Reference></SignedInfo><SignatureValue>KiBJ2eZT7jM8oYjSvnt2rfC89fdlhU92vseWdhF2S/Jyk9fFw1bGRRdoYwbPytBcDmV4yt5xArWrPz5e1VM/qVas21tuHJ7yVFR+wQopp00sPVWtkADivLMA70ZiDLqRuTTuwX0mcbm7bQMh+nvOUnWNULtbXhEjq14c5GUUxi0=</SignatureValue></Signature></message>
+内联平台返回到报文 -->
+ {rcmdStoreName=数联教育, RespCode=000000, OperId=123654, ClientIp=127.0.0.1, cardNo=6222021001108637086, BizTrackNo=1558669190705, returnCode=000000, ReqTime=20170613175050, merchantId=M02443701001000, Version=1.1, transCode=1014, BodyLength=647, cardIssuerName=工商银行, AccountNo=6222021001108637086, rcmdStoreCode=M02443701001101, ReqSeqNo=1558669190705, BranchId=1234567890, RequestSysDate=20190524, version=1.1, terminalType=APP, _HostTransactionCode=1014, transRecordId=3463, TransRecordId=3463, transType=20, SYGENZHH=558669191094, TermnId=, transSeqNo=1558506527089, _TransactionTimestamp=2019-05-24 11:39:50.841, RqUID=558669191094, ChannelId=17, operatorCode=shulian, ServiceId=IS_ROUTER_LOAN_CARDBINQRY, cardIssuer=01020000, cardBin=622202, openBankId=0102, customerId=ucif000000000105999, _RejCode=000000, Body={cardLen=, cardBin=622202, cardIssuerName=工商银行, dcType=0, openBankId=0102, cardNo=6222021001108637086, cardIssuer=01020000}, transRepTime=20190524113951, cardLen=, netCode=M02443701001101, dcType=0, RespMessage=成功, ResultState=0, _RejMessage=成功, transRepSeqNo=20190524113951052000000014899077, errorMsg=成功, transReqTime=20190524113951, productCode=941212, _TransCode=router-loan.CardBinQryService}
+
+
+5.1130-提交支付签约 用1024的客户信息，1014的bin
+ sendMap.put("IdNo","110101198705118589");
+        sendMap.put("CustomerName","朱剑成");
+        sendMap.put("DebitCardNo","6222021001108637086");
+        sendMap.put("DebitCardPhoneNo","13813131580");
+电商平台请求报文：
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><message>
+<head>
+<transCode>1130</transCode>
+<transType>20</transType>
+<transReqTime>20190524115303</transReqTime>
+<transSeqNo>1558506546545</transSeqNo>
+<merchantId>M02443701001000</merchantId>
+<productCode>941212</productCode>
+<netCode>M02443701001101</netCode>
+<operatorCode>shulian</operatorCode>
+<customerId>ucif000000000105999</customerId>
+<rcmdStoreCode>M02443701001101</rcmdStoreCode>
+<rcmdStoreName>数联教育</rcmdStoreName>
+<terminalType>APP</terminalType>
+<version>1.0</version>
+<merId>100010</merId>
+</head>
+<body>
+<authSysId>0101</authSysId>
+<idNo>110101198705118589</idNo>
+<customerName>朱剑成</customerName>
+<debitCardNo>6222021001108637086</debitCardNo>
+<debitCardPhoneNo>13813131580</debitCardPhoneNo>
+<openBank>工商银行</openBank>
+<openBankId>0102</openBankId>
+<prov>上海</prov>
+<city>上海</city>
+</body>
+电商平台返回报文prase后：
+<?xml version="1.0" encoding="UTF-8"?><message><head><transCode>1130</transCode><transType>20</transType><transReqTime>20190524115303</transReqTime><transRepTime>20190524115312</transRepTime><transSeqNo>1558506546545</transSeqNo><merchantId>M02443701001000</merchantId><productCode>941212</productCode><netCode>M02443701001101</netCode><operatorCode>shulian</operatorCode><customerId>ucif000000000105999</customerId><version>1.0</version><transRepSeqNo>20190524115312740000000014899203</transRepSeqNo><returnCode>000000</returnCode><errorMsg>成功</errorMsg></head><body><verCodeFlag>1</verCodeFlag><smsTransSeqNo>190524000411662</smsTransSeqNo></body><Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>6Chxr0e9YnV0/iGCi0PvWbBXsPE=</DigestValue></Reference></SignedInfo><SignatureValue>Hvm65Aw/B3fy3oUy9ezoZrELChjJnh7HRiJgjvYR2yshkr3T3ohj8krWaXi4eKGuZMsOTpj79sYvSWq8wUl4/AZTPe0pec+6L0kLgMe6yNUUREy41dE2xOsS3POrWAzvZggwovx2QzYOvEkTaO2my0tlO1QKRdjFYVuq7LyEi1w=</SignatureValue></Signature></message>
+内联平台返回到报文 --> {rcmdStoreName=数联教育, RespCode=000000, OperId=123654, OpenBankId=0102, ClientIp=127.0.0.1, BizTrackNo=1558669983062, returnCode=000000, ReqTime=20170613175050, merchantId=M02443701001000, Version=1.0, transCode=1130, BodyLength=917, rcmdStoreCode=M02443701001101, DebitCardNo=6222021001108637086, ReqSeqNo=1558669983062, BranchId=1234567890, City=上海, RequestSysDate=20190524, version=1.0, Prov=上海, terminalType=APP, _HostTransactionCode=1130, transRecordId=3464, TransRecordId=3464, transType=20, SYGENZHH=558669983447, AuthSysId=0101, VerCodeFlag=1, TermnId=, transSeqNo=1558506546545, _TransactionTimestamp=2019-05-24 11:53:03.206, RqUID=558669983447, ChannelId=17, operatorCode=shulian, ServiceId=IS_ROUTER_LOAN_COMMITPAYSIGN, customerId=ucif000000000105999, _RejCode=000000, CustomerName=朱剑成, Body={verCodeFlag=null, smsTransSeqNo=null}, transRepTime=20190524115312, netCode=M02443701001101, RespMessage=成功, ResultState=0, _RejMessage=成功, transRepSeqNo=20190524115312740000000014899203, errorMsg=成功, transReqTime=20190524115303, productCode=941212, _TransCode=router-loan.CommitPaySignService, DebitCardPhoneNo=13813131580, SmsTransSeqNo=190524000411662, OpenBank=工商银行, IdNo=110101198705118589}
+
+6.1131-支付签约短信验证  用1130的smsTransSeqNo
+
+电商平台请求报文：
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><message>
+<head>
+<transCode>1131</transCode>
+<transType>20</transType>
+<transReqTime>20190524120249</transReqTime>
+<transSeqNo>1558506546545</transSeqNo>
+<merchantId>M02443701001000</merchantId>
+<productCode>941212</productCode>
+<netCode>M02443701001101</netCode>
+<operatorCode>shulian</operatorCode>
+<customerId>ucif000000000105999</customerId>
+<rcmdStoreCode>M12041001001101</rcmdStoreCode>
+<rcmdStoreName>数联教育</rcmdStoreName>
+<terminalType>APP</terminalType>
+<version>1.0</version>
+<merId>100010</merId>
+</head>
+<body>
+<smsTransSeqNo>190524000411662</smsTransSeqNo>
+<verCode>888888</verCode>
+</body>
+电商平台返回报文prase后：
+<?xml version="1.0" encoding="UTF-8"?><message><head><transCode>1131</transCode><transType>20</transType><transReqTime>20190524120249</transReqTime><transRepTime>20190524120249</transRepTime><transSeqNo>1558506546545</transSeqNo><merchantId>M02443701001000</merchantId><productCode>941212</productCode><netCode>M02443701001101</netCode><operatorCode>shulian</operatorCode><customerId>ucif000000000105999</customerId><version>1.0</version><transRepSeqNo>20190524120249746000000014899283</transRepSeqNo><returnCode>000000</returnCode><errorMsg>成功</errorMsg></head><body><smsTransSeqNo>190524000411662</smsTransSeqNo></body><Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>WrO2+NNo+rCW/JXihod9EoT6FL8=</DigestValue></Reference></SignedInfo><SignatureValue>ddfPTLhIFzTj6Bhc+BCD2wPC1SJQpaZQg+94b7mBmTd/RI2G0taaoChJGASEzuqwwVrRX4xj16uJVpt38Y2skKCu4957ghoTGoF2sYYybRdMAl95aYDLj3/npLJM8obNd7RHrZnrhxfCk2LbFUPNgfU+Fwcpju5NwiD0o/7dG2M=</SignatureValue></Signature></message>
+内联平台返回到报文 --> 
+{rcmdStoreName=数联教育, RespCode=000000, OperId=123654, TermnId=, transSeqNo=1558506546545, VerCode=888888, _TransactionTimestamp=2019-05-24 12:02:48.9, RqUID=558670569563, ChannelId=17, operatorCode=shulian, ClientIp=127.0.0.1, ServiceId=IS_ROUTER_LOAN_PAYSIGNMESSAGEVERIFY, BizTrackNo=1558670568720, returnCode=000000, ReqTime=20170613175050, merchantId=M02443701001000, Version=1.0, customerId=ucif000000000105999, _RejCode=000000, transCode=1131, BodyLength=684, Body={smsTransSeqNo=null}, transRepTime=20190524120249, netCode=M02443701001101, rcmdStoreCode=M12041001001101, ReqSeqNo=1558670568720, RespMessage=成功, ResultState=0, BranchId=1234567890, _RejMessage=成功, RequestSysDate=20190524, version=1.0, terminalType=APP, transRepSeqNo=20190524120249746000000014899283, errorMsg=成功, _HostTransactionCode=1131, transRecordId=3465, TransRecordId=3465, transReqTime=20190524120249, productCode=941212, transType=20, SYGENZHH=558670569563, _TransCode=router-loan.PaySignMessageVerifyService, SmsTransSeqNo=190524000411662}
+
+7.2251-开户申请
+电商平台请求报文：
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><message>
+<head>
+<transCode>2251</transCode>
+<transType>20</transType>
+<transReqTime>20190524122513</transReqTime>
+<transSeqNo>1558506623574</transSeqNo>
+<merchantId>M02443701001000</merchantId>
+<productCode>941212</productCode>
+<netCode>M02443701001101</netCode>
+<operatorCode>shulian</operatorCode>
+<customerId>ucif000000000105999</customerId>
+<rcmdStoreCode>M02443701001101</rcmdStoreCode>
+<rcmdStoreName>数联教育</rcmdStoreName>
+<terminalType>APP</terminalType>
+<version>1.0</version>
+<merId>100010</merId>
+</head>
+<body>
+<idNo>110101198705118589</idNo>
+<idNoValidStartDate>2011-08-25</idNoValidStartDate>
+<idNoValidEndDate>2021-08-25</idNoValidEndDate>
+<idcardAddress>江苏省仪征市环东路东山二村13幢204室</idcardAddress>
+<education>2</education>
+<graduatedSchool>bb</graduatedSchool>
+<graduatedYear/>
+<studyMode/>
+<customerName>朱剑成</customerName>
+<mobileNo>13813131580</mobileNo>
+<registerDate>20190522</registerDate>
+<loanAmount>25000</loanAmount>
+<loanPurpose/>
+<loanPurposeRemark/>
+<incomeRange/>
+<homeAddr1>上海市</homeAddr1>
+<homeAddr2>上海市辖区</homeAddr2>
+<homeAddr3>宝山区</homeAddr3>
+<homeAddr4>hy</homeAddr4>
+<homeTelArea/>
+<homeTelNo/>
+<jobUnit/>
+<unitAddr1/>
+<unitAddr2/>
+<unitAddr3/>
+<unitAddr4/>
+<unitTelArea/>
+<unitTelNo/>
+<unitTelExt/>
+<authSysId>0101</authSysId>
+<debitCardPhoneNo>13816894965</debitCardPhoneNo>
+<debitCardNo>6222021001108637085</debitCardNo>
+<openBankId>0102</openBankId>
+<openBank>工商银行</openBank>
+<prov>上海</prov>
+<city>上海</city>
+<contactList><contact>
+<contactName>呆地</contactName>
+<contactPhone>15861390896</contactPhone>
+<contactRelation>1</contactRelation>
+</contact>
+<contact>
+<contactName>高云峰</contactName>
+<contactPhone>13122059516</contactPhone>
+<contactRelation>1</contactRelation>
+</contact>
+</contactList>
+<returnDate>31</returnDate>
+<payMode>3</payMode>
+<loanDeadline>20</loanDeadline>
+<easyPayType>A</easyPayType>
+<instalType>B</instalType>
+<intrestFeeType>1</intrestFeeType>
+<intrestType>A</intrestType>
+<instalFeeType>D</instalFeeType>
+<prePayType>A</prePayType>
+<brand/>
+<longitude>121.529208</longitude>
+<latitude>31.196984</latitude>
+<geoCity>上海市</geoCity>
+<addressBookNumber>316</addressBookNumber>
+<addressBookNumberCity>35</addressBookNumberCity>
+<addressBookNumberRow>204</addressBookNumberRow>
+<hasCreditCard/>
+<creditCardNo/>
+<ip>112.65.61.220</ip>
+<deviceType>Android</deviceType>
+<model>vivoX20A</model>
+<imei>867367034124912</imei>
+<imsi>460006843180247</imsi>
+<serialNo/>
+<androidId/>
+<mac>38:6e:a2:e4:48:97</mac>
+<idfa/>
+<platform/>
+<mobileVersion/>
+<memory/>
+<capacity>51.34</capacity>
+<available_capacity/>
+<photoList><photo>
+<photoType>03</photoType>
+<photoName>test_sfz_01.jpg</photoName>
+</photo>
+<photo>
+<photoType>40</photoType>
+<photoName>test_sfz_2.jpg</photoName>
+</photo>
+<photo>
+<photoType>70</photoType>
+<photoName>test_sfz_2.jpg</photoName>
+</photo>
+</photoList>
+<extendsFileds>
+<applyCode>BO20190523000025</applyCode>
+<enterMode>03</enterMode>
+<productName>技能云分期</productName>
+<merchantCode>M02443701001000</merchantCode>
+<merchantName>山东数联教育科技有限公司(济南)</merchantName>
+<areaCode>C00000</areaCode>
+<areaName>华东地区</areaName>
+<netName>数联教育</netName>
+<parentNetName>山东数联教育科技有限公司(济南-清算)</parentNetName>
+<parentNetCode>M02443701001100</parentNetCode>
+<operatorCode>shulian</operatorCode>
+<acceptPersonName>shulian</acceptPersonName>
+<acceptPersonContact>13505170001</acceptPersonContact>
+<nameSpell>zhu jian bo</nameSpell>
+<idType>01</idType>
+<sex>男</sex>
+<isInSchool>2</isInSchool>
+<agreeUnderLoanLimit>0</agreeUnderLoanLimit>
+<goodsName>hjj</goodsName>
+<goodsPrice>25000.0</goodsPrice>
+<idcardNation>汉</idcardNation>
+<idcardBirthday>19880122</idcardBirthday>
+<idcardNOIssueOrgan>仪征市公安局</idcardNOIssueOrgan>
+<idcardLatestAddress>江苏省仪征市环东路东山二村13幢204室</idcardLatestAddress>
+<cardIssuerName>工商银行</cardIssuerName>
+<cardIssuer>01020000</cardIssuer>
+<houseStatus>4</houseStatus>
+<channel>g64wyqEMc8</channel>
+<deviceFingerprint>eyJvcyI6ImFuZHJvaWQiLCJ2ZXJzaW9uIjoiMy4wLjQiLCJwYWNrYWdlcyI6Im9yZy5lc2J1aWxkZXIubXAueXVuXzEuNC41IiwicHJvZmlsZV90aW1lIjoyODQsImludGVydmFsX3RpbWUiOjU4Njg2MywidG9rZW5faWQiOiJTbGZpV0dHU2I4UHpHWDFBZE1qRWdUVkUxT2tBMXl6NlBWVk92WlQrb3JNUEhwUkZTQ0hhZWhDK1l2cERHZFhodWRnZHAyaFoweUhHa0p4V2pIUnl0dz09In0=</deviceFingerprint>
+<likmanList><likman>
+<linkmanName>呆地</linkmanName>
+<linkmanMobile>15861390896</linkmanMobile>
+<relation>1</relation>
+</likman>
+<likman>
+<linkmanName>高云峰</linkmanName>
+<linkmanMobile>13122059516</linkmanMobile>
+<relation>1</relation>
+</likman>
+</likmanList>
+<schoolName>bb</schoolName>
+<guardianList>
+</guardianList><hometownAddr1>上海市</hometownAddr1>
+<hometownAddr2>上海市辖区</hometownAddr2>
+<hometownAddr3>宝山区</hometownAddr3>
+<hometownAddr4>vb</hometownAddr4>
+<relateList>
+</relateList><classCode>vh</classCode>
+<coursePrice>25000.0</coursePrice>
+</extendsFileds>
+</body>电商平台返回报文prase后：
+电商平台返回报文prase后：<?xml version="1.0" encoding="UTF-8"?><message><head><transCode>2251</transCode><transType>20</transType><transReqTime>20190524122513</transReqTime><transRepTime>20190524122513</transRepTime><transSeqNo>1558506623574</transSeqNo><merchantId>M02443701001000</merchantId><productCode>941212</productCode><netCode>M02443701001101</netCode><operatorCode>shulian</operatorCode><customerId>ucif000000000105999</customerId><version>1.0</version><transRepSeqNo>20190524122513423000000014899377</transRepSeqNo><returnCode>000000</returnCode><errorMsg>成功</errorMsg></head><body><applicationId>BO20190524000011</applicationId></body><Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>hS68zYL1v1CqLT5ivegCf1ey8Vo=</DigestValue></Reference></SignedInfo><SignatureValue>BJtJfc6+JAuW0PzNZV9jiHXQk9vh6TL4Enod74SAjmA9GpFP1vw5d1YmfFRHYuPRpDI13iHHd2Iz1d/kriVzvRN9Ui+3GbIcnnn3PCI10/6TwwdCYGB6j+7sXn4ZpzoRZwd/hGm80sd0/bfk2VA4Po0yA/AVIaK2NysUYhOrH7A=</SignatureValue></Signature></message>
+ 内联平台返回到报文 --> 
+内联平台返回到报文 --> {BankName=工商银行, rcmdStoreName=数联教育, HomeAddress=hy, OperId=123654, WaresAmount=25000.0, RepayDate=31, Gender=男, AddressBookNumberRow=204, BizTrackNo=1558671912696, ReqTime=20170613175050, ParentNetName=山东数联教育科技有限公司(济南-清算), Capacity=51.34, PhoneNo=13813131580, OperatorCode=shulian, transCode=2251, IdcardLatestAddress=江苏省仪征市环东路东山二村13幢204室, AccountNo=1, InstalFeeType=D, ReqSeqNo=1558671912696, SchoolName=bb, BranchId=1234567890, HomeProvince=上海市, EffectEndDate=2021-08-25, Longitude=121.529208, version=1.0, Mac=38:6e:a2:e4:48:97, IdType=01, EnterMode=03, _HostTransactionCode=2251, applicationId=BO20190524000011, GraduatedSchool=bb, AcceptPersonName=shulian, AuthSysId=0101, HomeProperties=4, TermnId=, transSeqNo=1558506623574, Ip=112.65.61.220, ReduceFlag=0, MerchantId=M02443701001000, GeoCity=上海市, operatorCode=shulian, ServiceId=IS_ROUTER_LOAN_LOANAPPLY, AreaName=华东地区, ProvinceName=上海, MerchantName=山东数联教育科技有限公司(济南), IntrestType=A, LikmanList=[{LinkmanName=呆地, Relation=1, LinkmanMobile=15861390896}, {LinkmanName=高云峰, Relation=1, LinkmanMobile=13122059516}], customerId=ucif000000000105999, _RejCode=000000, AcceptPersonContact=13505170001, DeviceFingerprint=eyJvcyI6ImFuZHJvaWQiLCJ2ZXJzaW9uIjoiMy4wLjQiLCJwYWNrYWdlcyI6Im9yZy5lc2J1aWxkZXIubXAueXVuXzEuNC41IiwicHJvZmlsZV90aW1lIjoyODQsImludGVydmFsX3RpbWUiOjU4Njg2MywidG9rZW5faWQiOiJTbGZpV0dHU2I4UHpHWDFBZE1qRWdUVkUxT2tBMXl6NlBWVk92WlQrb3JNUEhwUkZTQ0hhZWhDK1l2cERHZFhodWRnZHAyaFoweUhHa0p4V2pIUnl0dz09In0=, transRepTime=20190524122513, Amount=25000, RespMessage=成功, ContactList=[{ContactPhoneNo=15861390896, ContactName=呆地, ContactRelation=1}, {ContactPhoneNo=13122059516, ContactName=高云峰, ContactRelation=1}], EasyPayType=A, GoodsName=hjj, InstalTerm=20, errorMsg=成功, IdAddress=江苏省仪征市环东路东山二村13幢204室, CardIssuer=01020000, PrePayType=A, productCode=941212, _TransCode=router-loan.LoanApplyService, Model=vivoX20A, CifName=朱剑成, IsInSchool=2, IdNo=110101198705118589, AddressBookNumber=316, RespCode=000000, ProductName=技能云分期, ParentNetCode=M02443701001100, Latitude=31.196984, HometownAddr2=上海市辖区, ClientIp=127.0.0.1, HometownAddr3=宝山区, HometownAddr4=vb, MobilePhone=13816894965, FilesList=[{FileType=03, FileName=test_sfz_01.jpg}, {FileType=40, FileName=test_sfz_2.jpg}, {FileType=70, FileName=test_sfz_2.jpg}], returnCode=000000, HometownAddr1=上海市, Education=2, merchantId=M02443701001000, Version=1.0, InstalType=B, RepayType=3, BodyLength=5534, AddressBookNumberCity=35, rcmdStoreCode=M02443701001101, Channel=g64wyqEMc8, IdcardBirthday=19880122, CityName=上海, RequestSysDate=20190524, NetName=数联教育, terminalType=APP, DeviceType=Android, transRecordId=3468, TransRecordId=3468, transType=20, SYGENZHH=558671913007, Imsi=460006843180247, AreaCode=C00000, IdcardNOIssueOrgan=仪征市公安局, EffectBeginDate=2011-08-25, AcNo=6222021001108637085, BankId=0102, CourseAmount=25000.0, CardIssuerName=工商银行, _TransactionTimestamp=2019-05-24 12:25:12.905, RqUID=558671913007, Imei=867367034124912, ChannelId=17, ClassName=vh, HomeCommunity=宝山区, HomeCity=上海市辖区, IdcardNation=汉, Body={ApplicationId=BO20190524000011}, netCode=M02443701001101, RegisterDate=20190522, ApplyCode=BO20190523000025, ResultState=0, _RejMessage=成功, transRepSeqNo=20190524122513423000000014899377, transReqTime=20190524122513, CifPhoneticName=zhu jian bo}
+
+
+
